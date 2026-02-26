@@ -4,6 +4,8 @@
 """
 from django.http import JsonResponse
 from django.views import View
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
 from auth_system.decorators import require_view, require_create, require_edit, require_delete
 from auth_system.models import Resource, Permission
 import json
@@ -88,6 +90,7 @@ class ProductDetailView(View):
         )
 
 
+@method_decorator(csrf_exempt, name='dispatch')
 class ProductCreateView(View):
     """Создание нового товара"""
     
@@ -122,6 +125,7 @@ class ProductCreateView(View):
             return JsonResponse({'error': str(e)}, status=400)
 
 
+@method_decorator(csrf_exempt, name='dispatch')
 class ProductUpdateView(View):
     """Обновление товара с проверкой прав"""
     
@@ -185,6 +189,7 @@ class ProductUpdateView(View):
             return JsonResponse({'error': str(e)}, status=400)
 
 
+@method_decorator(csrf_exempt, name='dispatch')
 class ProductDeleteView(View):
     """Удаление товара с проверкой прав"""
     
