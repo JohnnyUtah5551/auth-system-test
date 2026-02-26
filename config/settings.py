@@ -35,7 +35,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    # 'django.contrib.auth.middleware.AuthenticationMiddleware',  # Отключаем стандартную аутентификацию
+    'django.contrib.auth.middleware.AuthenticationMiddleware',  # ВКЛЮЧАЕМ обратно
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'users.middleware.CustomAuthMiddleware',  # Наш кастомный middleware
